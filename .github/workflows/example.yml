@@ -29,7 +29,7 @@ jobs:
           path: some-large-file
           key: large-file
   restore-macos:
-    name:  restore-linux
+    name:  restore-macos
     needs: generate
     runs-on: macos-12
     steps:
