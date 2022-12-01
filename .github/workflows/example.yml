@@ -5,7 +5,6 @@ on:
   pull_request:
 
 jobs:
-
   generate:
     name: generate
     runs-on: ubuntu-latest
@@ -17,7 +16,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: some-large-file
-          key: ${{ hashFiles('some-large-file') }}
+          key: whatever
   restore-linux:
     name:  restore-linux
     needs: generate
@@ -27,7 +26,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: some-large-file
-          key: large-file
+          key: 'false'
   restore-macos:
     name:  restore-macos
     needs: generate
@@ -37,4 +36,4 @@ jobs:
         uses: actions/cache@v3
         with:
           path: some-large-file
-          key: large-file
+          key: 'false'
