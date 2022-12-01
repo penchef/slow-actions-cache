@@ -6,18 +6,18 @@ on:
 
 jobs:
 
-
   generate:
     name: generate
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: generate large file to cache
         run: dd if=/dev/urandom of=some-large-file bs=1M count=500
       - name: cache large file
         uses: actions/cache@v3
         with:
           path: some-large-file
-          key: large-file
+          key: ${{ hashFiles('something.lock') }}
   restore-linux:
     name:  restore-linux
     needs: generate
