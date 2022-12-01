@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: some-large-file
-          key: ${{ hashFiles('something.lock') }}
+          key: ${{ hashFiles('some-large-file') }}
   restore-linux:
     name:  restore-linux
     needs: generate
